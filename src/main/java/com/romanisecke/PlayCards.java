@@ -1,13 +1,14 @@
 package com.romanisecke;
 
 /**
- * Hello world!
+ * Let's play some poker!
  *
  */
-public class App 
+public class PlayCards
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+
+
     }
 }
