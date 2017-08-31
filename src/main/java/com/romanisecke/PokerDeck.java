@@ -3,6 +3,11 @@ package com.romanisecke;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Implementation of AbstractDeck, with the intention of holding poker style playing cards
+ * Initializes to hold a deck with 52 playing cards in four suits: hearts, spades, clubs, diamonds, with
+ face values of Ace, 2-10, Jack, Queen, and King.
+ */
 public class PokerDeck extends AbstractDeck {
     private LinkedList<PlayingCard> pokerCards = new LinkedList<PlayingCard>();
 
@@ -14,10 +19,18 @@ public class PokerDeck extends AbstractDeck {
         this.pokerCards = pokerCards;
     }
 
+    /**
+     *
+     * @return current list of playing cards being used
+     */
     public List<PlayingCard> getPlayingCards() {
         return getPokerCards();
     }
 
+    /**
+     *
+     * @param playingCard - The playing card item to add to the current list of cards in the deck
+     */
     public void addCard(PlayingCard playingCard) {
         pokerCards.add(playingCard);
     }
@@ -26,6 +39,9 @@ public class PokerDeck extends AbstractDeck {
         init();
     }
 
+    /**
+     * Initialize the deck to the standard 52 playing cards
+     */
     public void init() {
         for (String suit : PokerPlayingCard.possibleSuits) {
             for (String value : PokerPlayingCard.possibleValue) {
@@ -34,10 +50,17 @@ public class PokerDeck extends AbstractDeck {
         }
     }
 
+    /**
+     * Get the size of the deck based on the list of cards
+     * @return
+     */
     public int getSize() {
         return getPlayingCards().size();
     }
 
+    /**
+     * Set the deck to hold an empty list of cards
+     */
     public void setEmpty() {
         setPokerCards(new LinkedList<PlayingCard>());
     }
