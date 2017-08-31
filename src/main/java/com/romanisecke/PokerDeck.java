@@ -38,5 +38,9 @@ public class PokerDeck extends AbstractDeck {
         return getPlayingCards().size();
     }
 
+    public void setEmpty() {
+        setPokerCards(new LinkedList<PlayingCard>());
+    }
+
 
 }
