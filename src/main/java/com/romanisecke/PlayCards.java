@@ -1,5 +1,7 @@
 package com.romanisecke;
 
+import com.romanisecke.PokerStyle.PokerDeck;
+
 /**
  * Let's play with out deck!
  *

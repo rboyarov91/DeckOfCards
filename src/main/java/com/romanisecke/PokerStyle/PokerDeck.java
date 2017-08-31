@@ -1,4 +1,8 @@
-package com.romanisecke;
+package com.romanisecke.PokerStyle;
+
+import com.romanisecke.AbstractDeck;
+import com.romanisecke.PlayingCard;
+import com.romanisecke.PokerStyle.PokerPlayingCard;
 
 import java.util.LinkedList;
 import java.util.List;

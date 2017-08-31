@@ -1,5 +1,6 @@
-package com.romanisecke;
+package com.romanisecke.PokerStyle;
 
+import com.romanisecke.PlayingCard;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
