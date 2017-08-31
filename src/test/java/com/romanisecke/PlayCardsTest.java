@@ -77,11 +77,13 @@ public class PlayCardsTest
     public void testWrongSuitCardAddition() {
         PokerDeck pokerDeck = new PokerDeck();
         pokerDeck.setEmpty();
+        String expectedString = String.format("suit value must be one of: %s",
+                StringUtils.join(PokerPlayingCard.possibleSuits, ","));
         try {
             pokerDeck.addCard(new PokerPlayingCard("circles", "6"));
+            fail(String.format("Expected exception with message:\n %s", expectedString));
         } catch (Exception e) {
-            assertEquals(e.getMessage(), String.format("suit value must be one of: %s",
-                    StringUtils.join(PokerPlayingCard.possibleSuits, ",")));
+            assertEquals(e.getMessage(), expectedString);
         }
     }
 
@@ -91,11 +93,13 @@ public class PlayCardsTest
     public void testWrongValueCardAddition() {
         PokerDeck pokerDeck = new PokerDeck();
         pokerDeck.setEmpty();
+        String expectedString = String.format("card value must be one of: %s",
+                StringUtils.join(PokerPlayingCard.possibleValue, ","));
         try {
             pokerDeck.addCard(new PokerPlayingCard("hearts", "1"));
+            fail(String.format("Expected exception with message:\n %s", expectedString));
         } catch (Exception e) {
-            assertEquals(e.getMessage(), String.format("card value must be one of: %s",
-                    StringUtils.join(PokerPlayingCard.possibleValue, ",")));
+            assertEquals(e.getMessage(), expectedString);
         }
     }
 
@@ -116,13 +120,14 @@ public class PlayCardsTest
     public void testUnsuccessfulCardsDealt() {
         int wrongDeckSize = 53;
         PokerDeck pokerDeck = new PokerDeck();
+        String expectedMessage = "Index: 0, Size: 0";
+        String expectedName = "java.lang.IndexOutOfBoundsException";
         try {
             for (int i = 0; i < wrongDeckSize; i++) {
                 pokerDeck.dealOneCard();
             }
+            fail(String.format("Exception expected with name %s", expectedName));
         } catch (Exception e) {
-            String expectedMessage = "Index: 0, Size: 0";
-            String expectedName = "java.lang.IndexOutOfBoundsException";
             assertEquals(expectedMessage, e.getMessage());
             assertEquals(expectedName, e.getClass().getName());
         }
