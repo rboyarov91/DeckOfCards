@@ -4,10 +4,14 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 /**
  * Unit test for simple App.
  */
-public class PlayPokerTest
+public class PlayCardsTest
     extends TestCase
 {
     /**
@@ -15,7 +19,7 @@ public class PlayPokerTest
      *
      * @param testName name of the test case
      */
-    public PlayPokerTest(String testName )
+    public PlayCardsTest(String testName )
     {
         super( testName );
     }
@@ -25,14 +29,18 @@ public class PlayPokerTest
      */
     public static Test suite()
     {
-        return new TestSuite( PlayPokerTest.class );
+        return new TestSuite( PlayCardsTest.class );
     }
 
     /**
-     * Rigourous Test :-)
+     * Test that all cards are unique in a deck
      */
-    public void testApp()
+    public void testUniqueness()
     {
-        assertTrue( true );
+        Set<PlayingCard> uniqueCards = new HashSet<PlayingCard>();
+        PokerDeck pokerDeck = new PokerDeck();
+        uniqueCards.addAll(pokerDeck.getPlayingCards());
+
+        assertEquals(pokerDeck.getSize(), uniqueCards.size());
     }
 }
