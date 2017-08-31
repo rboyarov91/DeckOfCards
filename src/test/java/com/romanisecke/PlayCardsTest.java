@@ -3,9 +3,9 @@ package com.romanisecke;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -42,5 +42,89 @@ public class PlayCardsTest
         uniqueCards.addAll(pokerDeck.getPlayingCards());
 
         assertEquals(pokerDeck.getSize(), uniqueCards.size());
+    }
+
+    /**
+     * Test to make sure the initial deck is set up with 52 cards
+     */
+    public void testInitialSize() {
+        PokerDeck pokerDeck = new PokerDeck();
+        assertEquals(52, pokerDeck.getSize());
+    }
+
+    /**
+     * Test to make sure the shuffle method doesn't alter the size of the deck
+     */
+    public void testSizeIntegrityOnShuffle() {
+        PokerDeck pokerDeck = new PokerDeck();
+        int initialSize = pokerDeck.getSize();
+        pokerDeck.shuffle();
+        assertEquals(initialSize, pokerDeck.getSize());
+    }
+
+    /**
+     * Test that an appropriate card is created and added to the deck
+     */
+    public void testSuccessfullCardAddition() {
+        PokerDeck pokerDeck = new PokerDeck();
+        pokerDeck.setEmpty();
+        pokerDeck.addCard(new PokerPlayingCard("hearts", "5"));
+    }
+
+    /**
+     * Test that an unsuccessful card throws the appropriate error based on suit
+     */
+    public void testWrongSuitCardAddition() {
+        PokerDeck pokerDeck = new PokerDeck();
+        pokerDeck.setEmpty();
+        try {
+            pokerDeck.addCard(new PokerPlayingCard("circles", "6"));
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), String.format("suit value must be one of: %s",
+                    StringUtils.join(PokerPlayingCard.possibleSuits, ",")));
+        }
+    }
+
+    /**
+     * Test that an unsuccessful card throws the appropriate error based on value
+     */
+    public void testWrongValueCardAddition() {
+        PokerDeck pokerDeck = new PokerDeck();
+        pokerDeck.setEmpty();
+        try {
+            pokerDeck.addCard(new PokerPlayingCard("hearts", "1"));
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), String.format("card value must be one of: %s",
+                    StringUtils.join(PokerPlayingCard.possibleValue, ",")));
+        }
+    }
+
+    /**
+     * Test that a a full deck is dealt based on knowing it should be of length 52
+     */
+    public void testSuccessfulCardsDealt() {
+        int deckSize = 52;
+        PokerDeck pokerDeck = new PokerDeck();
+        for (int i = 0; i < deckSize; i++) {
+            pokerDeck.dealOneCard();
+        }
+    }
+
+    /**
+     * Test that trying to deal more than 52 cards throws the appropriate out of bounds error
+     */
+    public void testUnsuccessfulCardsDealt() {
+        int wrongDeckSize = 53;
+        PokerDeck pokerDeck = new PokerDeck();
+        try {
+            for (int i = 0; i < wrongDeckSize; i++) {
+                pokerDeck.dealOneCard();
+            }
+        } catch (Exception e) {
+            String expectedMessage = "Index: 0, Size: 0";
+            String expectedName = "java.lang.IndexOutOfBoundsException";
+            assertEquals(expectedMessage, e.getMessage());
+            assertEquals(expectedName, e.getClass().getName());
+        }
     }
 }
