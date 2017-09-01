@@ -1,6 +1,7 @@
 package com.romanisecke;
 
 import com.romanisecke.PokerStyle.PokerDeck;
+import com.romanisecke.UnoStyle.UnoDeck;
 
 /**
  * Let's play with out deck!
@@ -37,8 +38,6 @@ public class PlayCards
     }
 
     public static void printCards(PokerDeck deck) {
-        for (PlayingCard card : deck.getPlayingCards()) {
-            System.out.println(card.toString());
-        }
+        deck.getPlayingCards().stream().forEach(card -> card.toString());
     }
 }
