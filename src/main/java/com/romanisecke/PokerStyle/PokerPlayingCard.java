@@ -27,7 +27,7 @@ public class PokerPlayingCard implements PlayingCard {
      * @throws IllegalArgumentException
      */
     public void setSuit(String suit) throws IllegalArgumentException {
-        checkSecondValue(suit);
+        checkFirstValueAndThrowError(suit);
         this.suit = suit;
     }
 
@@ -37,7 +37,7 @@ public class PokerPlayingCard implements PlayingCard {
      * @throws IllegalArgumentException
      */
     public void setValue(String value) throws IllegalArgumentException {
-        checkFirstValue(value);
+        checkSecondValueAndThrowError(value);
         this.value = value;
     }
 
@@ -47,38 +47,62 @@ public class PokerPlayingCard implements PlayingCard {
      * @param value
      */
     public PokerPlayingCard(String suit, String value) {
-        checkFirstValue(value);
-        checkSecondValue(suit);
+        checkSecondValueAndThrowError(value);
+        checkFirstValueAndThrowError(suit);
 
         this.suit = suit;
         this.value = value;
     }
 
+    /**
+     * Getter method for suit field
+     * @return the String value of the suit field
+     */
     public String getFirstValue() {
         return suit;
     }
 
+    /**
+     * Getter method for value field
+     * @return the String field of the card value field
+     */
     public String getSecondValue() {
         return value;
     }
 
     /**
-     * Check that the given card value is valid
+     * Public method that checks the card value passed in is a valid valie
      * @param value
      */
-    public void checkSecondValue(String value) {
-        if (!possibleValue.contains(value)) {
+    public boolean isSecondValueValid(String value) {
+        return possibleValue.contains(value);
+    }
+
+    /**
+     * Method that throws an appropriate error if card value passed is invalid
+     * @param value
+     */
+    private void checkSecondValueAndThrowError(String value) {
+        if (!isSecondValueValid(value)) {
             throw new IllegalArgumentException(String.format("card value must be one of: %s",
                     StringUtils.join(possibleValue, ",")));
         }
     }
 
     /**
-     * Check that the given card suit is valid
+     * Public method that checks that the passed in suit is a valid suit
      * @param suit
      */
-    public void checkFirstValue(String suit) {
-        if (!possibleSuits.contains(suit)) {
+    public boolean isFirstValueValid(String suit) {
+        return possibleSuits.contains(suit);
+    }
+
+    /**
+     * Method that throws an appropriate error if suit is invalid
+     * @param suit
+     */
+    private void checkFirstValueAndThrowError(String suit) {
+        if (!isFirstValueValid(suit)) {
             throw new IllegalArgumentException(String.format("suit value must be one of: %s",
                     StringUtils.join(possibleSuits, ",")));
         }

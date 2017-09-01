@@ -13,9 +13,9 @@ public interface PlayingCard {
 
     boolean isEqual(Object obj);
 
-    void checkFirstValue(String value);
+    boolean isFirstValueValid(String value);
 
-    void checkSecondValue(String suit);
+    boolean isSecondValueValid(String suit);
 }
 
 
