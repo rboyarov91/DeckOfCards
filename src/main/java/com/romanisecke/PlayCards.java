@@ -11,7 +11,8 @@ public class PlayCards
 {
     /**
      * Stepping through all the functionality introduced.
-     * 1. Initialize a standard poker-style deck (52 cards)
+     * 1. Choose between playing with an uno or poker style deck
+     * 1. Initialize it to contain the default starting list of playing cards
      * 2. Shuffle the deck
      * 3. Deal the whole deck out with a check on the size of what's left in the deck as it's dealt
      * @param args

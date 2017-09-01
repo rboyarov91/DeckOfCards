@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * An uno implementation of a playing card with a suit and color value
+ * Not as fully documented as the poker style as this is solely meant to show the simplicity
+ * allowed by Java's polymorphism
+ */
 public class UnoPlayingCard implements PlayingCard {
 
     public static final List<String> possibleSuits =
@@ -16,14 +21,31 @@ public class UnoPlayingCard implements PlayingCard {
     private String suit;
 
     private String value;
+
+    public String getSuit() {
+        return suit;
+    }
+
+    public void setSuit(String suit) {
+        this.suit = suit;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     @Override
     public String getFirstValue() {
-        return suit;
+        return getSuit();
     }
 
     @Override
     public String getSecondValue() {
-        return value;
+        return getValue();
     }
 
     @Override

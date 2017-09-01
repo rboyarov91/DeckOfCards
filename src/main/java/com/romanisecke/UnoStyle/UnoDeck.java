@@ -6,6 +6,11 @@ import com.romanisecke.PlayingCard;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * An deck container for uno playing cards
+ * Not as fully documented as the poker style as this is solely meant to show the simplicity
+ * allowed by Java's polymorphism
+ */
 public class UnoDeck extends AbstractDeck {
     private LinkedList<PlayingCard> unoPlayingCards = new LinkedList<PlayingCard>();
 
