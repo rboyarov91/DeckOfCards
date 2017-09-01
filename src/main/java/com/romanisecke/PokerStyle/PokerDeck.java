@@ -16,6 +16,10 @@ public class PokerDeck extends AbstractDeck {
     private LinkedList<PlayingCard> pokerCards = new LinkedList<PlayingCard>();
 
     private LinkedList<PlayingCard> getPokerCards() {
+        // Just in case pokerCards gets set to null along the way, this should prevent a NullPointerException
+        if (pokerCards == null) {
+            return new LinkedList<>();
+        }
         return pokerCards;
     }
 
