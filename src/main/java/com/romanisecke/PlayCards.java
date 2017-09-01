@@ -18,26 +18,36 @@ public class PlayCards
      */
     public static void main( String[] args )
     {
-        System.out.println("Lets play some cards!");
-        PokerDeck pokerDeck = new PokerDeck();
+
+        String letsPlay = "uno";
+        //String letsPlay = "poker";
+        AbstractDeck deck;
+        if ("uno".equals(letsPlay)) {
+            deck = new UnoDeck();
+        } else {
+            deck = new PokerDeck();
+        }
+        System.out.println(String.format("Lets play some %s!", letsPlay));
         System.out.println("Starting out with the current deck:\n");
-        printCards(pokerDeck);
+        printCards(deck);
         System.out.println("\nShuffling...");
-        pokerDeck.shuffle();
+        deck.shuffle();
         System.out.println();
         System.out.println("Deck after shuffling:");
         System.out.println();
-        printCards(pokerDeck);
-        int startingSize = pokerDeck.getSize();
+        printCards(deck);
+        int startingSize = deck.getPlayingCards().size();
         System.out.println(String.format("\nLets deal it out, starting size of deck: %d\n", startingSize));
         for (int i = 0; i < startingSize; i++) {
-            System.out.println(String.format("Dealing %s, size of deck now: %d", pokerDeck.dealOneCard().toString(), pokerDeck.getSize()));
+            //System.out.println(String.format("Dealing %s, size of deck now: %d", deck.dealOneCard().toString(), deck.getPlayingCards().size()));
         }
         System.out.println("We're done!");
 
     }
 
-    public static void printCards(PokerDeck deck) {
-        deck.getPlayingCards().stream().forEach(card -> card.toString());
+    public static void printCards(AbstractDeck deck) {
+        for (PlayingCard card : deck.getPlayingCards()) {
+            System.out.println(card.toString());
+        }
     }
 }
