@@ -2,7 +2,6 @@ package com.romanisecke.PokerStyle;
 
 import com.romanisecke.AbstractDeck;
 import com.romanisecke.PlayingCard;
-import com.romanisecke.PokerStyle.PokerPlayingCard;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -39,14 +38,18 @@ public class PokerDeck extends AbstractDeck {
         pokerCards.add(playingCard);
     }
 
+    public boolean isEqual(Object obj) {
+        return false;
+    }
+
     public PokerDeck() {
-        init();
+        initializeDeck();
     }
 
     /**
      * Initialize the deck to the standard 52 playing cards
      */
-    public void init() {
+    public void initializeDeck() {
         for (String suit : PokerPlayingCard.possibleSuits) {
             for (String value : PokerPlayingCard.possibleValue) {
                 pokerCards.add(new PokerPlayingCard(suit, value));
@@ -68,6 +71,8 @@ public class PokerDeck extends AbstractDeck {
     public void setEmpty() {
         setPokerCards(new LinkedList<PlayingCard>());
     }
+
+
 
 
 }

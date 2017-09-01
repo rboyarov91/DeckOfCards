@@ -25,4 +25,8 @@ public interface DeckInterface {
      * @return Returns a single card from the current list of playing cards in the deck
      */
     PlayingCard dealOneCard();
+
+    boolean isEqual(Object obj);
+
+    public void initializeDeck();
 }

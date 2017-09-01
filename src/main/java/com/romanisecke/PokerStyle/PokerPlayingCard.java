@@ -27,7 +27,7 @@ public class PokerPlayingCard implements PlayingCard {
      * @throws IllegalArgumentException
      */
     public void setSuit(String suit) throws IllegalArgumentException {
-        checkCardSuit(suit);
+        checkSecondValue(suit);
         this.suit = suit;
     }
 
@@ -37,7 +37,7 @@ public class PokerPlayingCard implements PlayingCard {
      * @throws IllegalArgumentException
      */
     public void setValue(String value) throws IllegalArgumentException {
-        checkCardValue(value);
+        checkFirstValue(value);
         this.value = value;
     }
 
@@ -47,18 +47,18 @@ public class PokerPlayingCard implements PlayingCard {
      * @param value
      */
     public PokerPlayingCard(String suit, String value) {
-        checkCardValue(value);
-        checkCardSuit(suit);
+        checkFirstValue(value);
+        checkSecondValue(suit);
 
         this.suit = suit;
         this.value = value;
     }
 
-    public String getSuit() {
+    public String getFirstValue() {
         return suit;
     }
 
-    public String getValue() {
+    public String getSecondValue() {
         return value;
     }
 
@@ -66,7 +66,7 @@ public class PokerPlayingCard implements PlayingCard {
      * Check that the given card value is valid
      * @param value
      */
-    private void checkCardValue(String value) {
+    public void checkSecondValue(String value) {
         if (!possibleValue.contains(value)) {
             throw new IllegalArgumentException(String.format("card value must be one of: %s",
                     StringUtils.join(possibleValue, ",")));
@@ -77,7 +77,7 @@ public class PokerPlayingCard implements PlayingCard {
      * Check that the given card suit is valid
      * @param suit
      */
-    private void checkCardSuit(String suit) {
+    public void checkFirstValue(String suit) {
         if (!possibleSuits.contains(suit)) {
             throw new IllegalArgumentException(String.format("suit value must be one of: %s",
                     StringUtils.join(possibleSuits, ",")));
@@ -90,7 +90,7 @@ public class PokerPlayingCard implements PlayingCard {
      */
     @Override
     public String toString() {
-        return String.format("%s of %s", getValue(), getSuit());
+        return String.format("%s of %s", getSecondValue(), getFirstValue());
     }
 
     /**
@@ -98,11 +98,10 @@ public class PokerPlayingCard implements PlayingCard {
      * @param obj
      * @return  boolean results of the equality check
      */
-    @Override
-    public boolean equals(Object obj) {
+    public boolean isEqual(Object obj) {
         return obj instanceof PlayingCard
-        && ((PlayingCard) obj).getSuit().equals(getSuit())
-        && ((PlayingCard) obj).getValue().equals(getValue());
+        && ((PlayingCard) obj).getFirstValue().equals(getFirstValue())
+        && ((PlayingCard) obj).getSecondValue().equals(getSecondValue());
     }
 }
 
