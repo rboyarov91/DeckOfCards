@@ -134,4 +134,27 @@ public class PlayCardsTest
             assertEquals(expectedName, e.getClass().getName());
         }
     }
+    public void testSuccessfullDeckEquality() {
+        PokerDeck pokerDeck1 = new PokerDeck();
+        PokerDeck pokerDeck2 = new PokerDeck();
+        boolean equals = pokerDeck1.isEqual(pokerDeck2);
+        assertEquals(true, equals);
+    }
+
+    public void testUnsuccessfullDeckEqualityDueToDeckSize() {
+        PokerDeck pokerDeck1 = new PokerDeck();
+        PokerDeck pokerDeck2 = new PokerDeck();
+        pokerDeck2.dealOneCard();
+        boolean equals = pokerDeck1.isEqual(pokerDeck2);
+        assertEquals(false, equals);
+    }
+
+    public void testUnsuccessfullDeckEqualityDueToDeckContent() {
+        PokerDeck pokerDeck1 = new PokerDeck();
+        PokerDeck pokerDeck2 = new PokerDeck();
+        pokerDeck2.dealOneCard();
+        pokerDeck2.addCard(new PokerPlayingCard("hearts", "8"));
+        boolean equals = pokerDeck1.isEqual(pokerDeck2);
+        assertEquals(false, equals);
+    }
 }

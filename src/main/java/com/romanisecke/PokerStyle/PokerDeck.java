@@ -3,6 +3,7 @@ package com.romanisecke.PokerStyle;
 import com.romanisecke.AbstractDeck;
 import com.romanisecke.PlayingCard;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,10 +37,6 @@ public class PokerDeck extends AbstractDeck {
      */
     public void addCard(PlayingCard playingCard) {
         pokerCards.add(playingCard);
-    }
-
-    public boolean isEqual(Object obj) {
-        return false;
     }
 
     public PokerDeck() {

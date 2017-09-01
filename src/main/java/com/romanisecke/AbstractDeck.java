@@ -1,6 +1,9 @@
 package com.romanisecke;
 
+import com.romanisecke.PokerStyle.PokerDeck;
+
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -28,5 +31,19 @@ public abstract class AbstractDeck implements DeckInterface {
     public PlayingCard dealOneCard() {
         List<PlayingCard> playingCards = this.getPlayingCards();
         return playingCards.remove(0);
+    }
+
+    public boolean isEqual(Object obj) {
+        if (obj instanceof AbstractDeck && this.getPlayingCards().size() == ((AbstractDeck)obj).getPlayingCards().size()) {
+            AbstractDeck abstractDeck = (AbstractDeck) obj;
+            Iterator target = abstractDeck.getPlayingCards().iterator();
+            for (PlayingCard card : this.getPlayingCards()) {
+                if (!card.isEqual(target.next())) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }

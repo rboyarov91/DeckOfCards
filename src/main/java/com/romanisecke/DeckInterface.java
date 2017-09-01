@@ -28,5 +28,7 @@ public interface DeckInterface {
 
     boolean isEqual(Object obj);
 
-    public void initializeDeck();
+    void initializeDeck();
+
+
 }
