@@ -25,14 +25,19 @@ public abstract class AbstractDeck implements DeckInterface {
     }
 
     /**
-     *
-     * @return Removes and returns a single playing card from the deck
+     * Removes and returns a single playing card from the deck
+     * @return A single playing card from the list used by deck
      */
     public PlayingCard dealOneCard() {
         List<PlayingCard> playingCards = this.getPlayingCards();
         return playingCards.remove(0);
     }
 
+    /**
+     * Check for equality between this deck and any other object
+     * @param obj What the current deck is being checked against
+     * @return boolean value indicating equality, true if equal
+     */
     public boolean isEqual(Object obj) {
         if (obj instanceof AbstractDeck && this.getPlayingCards().size() == ((AbstractDeck)obj).getPlayingCards().size()) {
             AbstractDeck abstractDeck = (AbstractDeck) obj;

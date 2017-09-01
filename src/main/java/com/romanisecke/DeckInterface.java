@@ -7,16 +7,16 @@ import java.util.List;
  */
 public interface DeckInterface {
 
-    /**A simple getter method for the playing cards in the deck
-     *
+    /**
+     * A simple getter method for the playing cards in the deck
      * @return A List containing all the playing cards being used in the current deck
      */
     List<PlayingCard> getPlayingCards();
 
 
     /**
-     *
-     * @param playingCard - The playing card item to add to the current list of cards in the deck
+     * Add a single card to the list being used by deck
+     * @param playingCard - The playing card item to add
      */
     void addCard(PlayingCard playingCard);
 
@@ -26,8 +26,16 @@ public interface DeckInterface {
      */
     PlayingCard dealOneCard();
 
+    /**
+     * Returns the equality between the current deck and any object passed in
+     * @param obj Object to compare to
+     * @return boolean value, true is equal, false if not
+     */
     boolean isEqual(Object obj);
 
+    /**
+     * Every deck should have a default set of cards, this method initializes that list for that specific implementation
+     */
     void initializeDeck();
 
 

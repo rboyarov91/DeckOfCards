@@ -134,6 +134,11 @@ public class PlayCardsTest
             assertEquals(expectedName, e.getClass().getName());
         }
     }
+
+    /**
+     * Test checking that deck's check for validity returns true when
+     * they contain the same card list
+     */
     public void testSuccessfullDeckEquality() {
         PokerDeck pokerDeck1 = new PokerDeck();
         PokerDeck pokerDeck2 = new PokerDeck();
@@ -141,6 +146,10 @@ public class PlayCardsTest
         assertEquals(true, equals);
     }
 
+    /**
+     * Test checking that deck's check for validity returns false
+     * when the list of cards differ in size
+     */
     public void testUnsuccessfullDeckEqualityDueToDeckSize() {
         PokerDeck pokerDeck1 = new PokerDeck();
         PokerDeck pokerDeck2 = new PokerDeck();
@@ -149,6 +158,10 @@ public class PlayCardsTest
         assertEquals(false, equals);
     }
 
+    /**
+     * Test checking that deck's check for validity returns false when
+     * the list of cards differ in content but have the same size
+     */
     public void testUnsuccessfullDeckEqualityDueToDeckContent() {
         PokerDeck pokerDeck1 = new PokerDeck();
         PokerDeck pokerDeck2 = new PokerDeck();

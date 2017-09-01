@@ -3,7 +3,6 @@ package com.romanisecke.PokerStyle;
 import com.romanisecke.AbstractDeck;
 import com.romanisecke.PlayingCard;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,6 +14,10 @@ import java.util.List;
 public class PokerDeck extends AbstractDeck {
     private LinkedList<PlayingCard> pokerCards = new LinkedList<PlayingCard>();
 
+    /**
+     * Private method to get access to the list of cards being used by deck
+     * @return
+     */
     private LinkedList<PlayingCard> getPokerCards() {
         // Just in case pokerCards gets set to null along the way, this should prevent a NullPointerException
         if (pokerCards == null) {
@@ -23,6 +26,10 @@ public class PokerDeck extends AbstractDeck {
         return pokerCards;
     }
 
+    /**
+     * Private setter for the list of cards being used by deck
+     * @param pokerCards
+     */
     private void setPokerCards(LinkedList<PlayingCard> pokerCards) {
         this.pokerCards = pokerCards;
     }
@@ -43,6 +50,9 @@ public class PokerDeck extends AbstractDeck {
         pokerCards.add(playingCard);
     }
 
+    /**
+     * Constructor calling this implementation of AbstractDeck's initializer
+     */
     public PokerDeck() {
         initializeDeck();
     }
